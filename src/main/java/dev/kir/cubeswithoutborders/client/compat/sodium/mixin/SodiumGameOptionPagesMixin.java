@@ -4,9 +4,9 @@ import com.llamalad7.mixinextras.injector.wrapoperation.Operation;
 import com.llamalad7.mixinextras.injector.wrapoperation.WrapOperation;
 import dev.kir.cubeswithoutborders.client.option.FullscreenMode;
 import dev.kir.cubeswithoutborders.client.option.FullscreenOptions;
-import me.jellysquid.mods.sodium.client.gui.SodiumGameOptionPages;
-import me.jellysquid.mods.sodium.client.gui.options.OptionImpl;
-import me.jellysquid.mods.sodium.client.gui.options.control.CyclingControl;
+import net.caffeinemc.mods.sodium.client.gui.SodiumGameOptionPages;
+import net.caffeinemc.mods.sodium.client.gui.options.OptionImpl;
+import net.caffeinemc.mods.sodium.client.gui.options.control.CyclingControl;
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
 import net.minecraft.client.MinecraftClient;
@@ -22,7 +22,7 @@ import java.util.Arrays;
 @Mixin(value = SodiumGameOptionPages.class, remap = false)
 abstract class SodiumGameOptionPagesMixin {
     @SuppressWarnings("unchecked")
-    @WrapOperation(method = "general", at = @At(value = "INVOKE", target = "Lme/jellysquid/mods/sodium/client/gui/options/OptionImpl$Builder;build()Lme/jellysquid/mods/sodium/client/gui/options/OptionImpl;"), remap = false)
+    @WrapOperation(method = "general", at = @At(value = "INVOKE", target = "Lnet/caffeinemc/mods/sodium/client/gui/options/OptionImpl$Builder;build()Lnet/caffeinemc/mods/sodium/client/gui/options/OptionImpl;"), remap = false)
     private static <S, T> OptionImpl<S, T> rebuildFullscreenOption(OptionImpl.Builder<S, T> builder, Operation<OptionImpl<S, T>> optionFactory) {
         SimpleOption<FullscreenMode> fullscreenMode = ((FullscreenOptions)MinecraftClient.getInstance().options).getFullscreenMode();
         OptionImpl<S, T> option = optionFactory.call(builder);
